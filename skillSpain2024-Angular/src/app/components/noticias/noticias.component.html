@@ -1,0 +1,19 @@
+<div class="noticias">
+  @for (noticia of noticias; track noticia.id) {
+    <div class="noticia">
+      <h2>{{ noticia.titulo }}</h2>
+      <p><strong>Tipo:</strong> {{ noticia.tipo }}</p>
+      <p><strong>Contenido:</strong> {{ noticia.contenido }}</p>
+      <p><strong>Pueblo:</strong> {{ noticia.pueblo.nombre }}</p>
+      <p><strong>Fecha:</strong> {{ noticia.fecha_creacion }}</p>
+      <button (click) = "mostrar(noticia.id)" class="btn btn-primary">aaaa</button>
+    </div>
+  }
+</div>
+
+<div>
+    <h2>{{ datos.titulo }}</h2>
+      <p><strong>Tipo:</strong> {{ datos.tipo }}</p>
+      <p><strong>Contenido:</strong> {{ datos.contenido }}</p>
+      <p><strong>Fecha:</strong> {{ datos.fecha_creacion }}</p>
+</div>

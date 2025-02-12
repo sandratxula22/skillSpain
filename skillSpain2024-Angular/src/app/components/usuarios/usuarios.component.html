@@ -1,0 +1,10 @@
+<div class="usuarios">
+    @for (usuario of usuarios; track usuario.id) {
+      <div class="usuario">
+        <h2>{{ usuario.nombre }} {{ usuario.apellidos }}</h2>
+        <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+        <p><strong>Pueblo:</strong> {{ usuario.pueblo?.nombre || 'Sin Pueblo' }}</p>
+      </div>
+    }
+  </div>
+  

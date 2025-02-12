@@ -1,0 +1,12 @@
+<div class="eventos">
+    @for (evento of eventos; track evento.id) {
+      <div class="evento">
+        <h2>{{ evento.nombre }}</h2>
+        <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+        <p><strong>Hora:</strong> {{ evento.hora }}</p>
+        <p><strong>Precio:</strong> {{ evento.precio }}</p>
+        <p><strong>Pueblo:</strong> {{ evento.pueblo.nombre }}</p>
+      </div>
+    }
+  </div>
+  

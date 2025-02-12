@@ -1,0 +1,14 @@
+<div class="provincias">
+    @for (provincia of provincias; track provincia.id) {
+      <div class="provincia">
+        <h2>{{ provincia.nombre }}</h2>
+        <p><strong>Pueblos:</strong></p>
+        <ul>
+          @for (pueblo of provincia.pueblos; track pueblo.id) {
+            <li>{{ pueblo.nombre }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+  

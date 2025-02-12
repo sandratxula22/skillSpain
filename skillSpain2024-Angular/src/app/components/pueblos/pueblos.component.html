@@ -1,0 +1,12 @@
+<div class="pueblos">
+    @for (pueblo of pueblos; track pueblo.id) {
+      <div class="pueblo">
+        <h2>{{ pueblo.nombre }}</h2>
+        <p><strong>Provincia:</strong> {{ pueblo.provincia.nombre }}</p>
+        <p><strong>Vecinos Censados:</strong> {{ pueblo.num_vecinos_censados }}</p>
+        <p><strong>Personas en Fiestas:</strong> {{ pueblo.num_personas_fiestas }}</p>
+        <p><strong>Personas en Verano:</strong> {{ pueblo.num_personas_verano }}</p>
+      </div>
+    }
+  </div>
+  

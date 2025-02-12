@@ -1,0 +1,13 @@
+<div class="inscripciones">
+    @for (inscripcion of inscripciones; track inscripcion.id) {
+      <div class="inscripcion">
+        <h2>Inscripción #{{ inscripcion.id }}</h2>
+        <p><strong>Usuario:</strong> {{ inscripcion.usuario.nombre }}</p>
+        <p><strong>Tipo de Inscripción:</strong> {{ inscripcion.tipo_inscripcion }}</p>
+        <p><strong>Referencia ID:</strong> {{ inscripcion.referencia_id }}</p>
+        <p><strong>Fecha de Alta:</strong> {{ inscripcion.fecha_alta }}</p>
+        <p><strong>Fecha de Baja:</strong> {{ inscripcion.fecha_baja || 'N/A' }}</p>
+      </div>
+    }
+  </div>
+  
