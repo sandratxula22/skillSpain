@@ -1,10 +1,26 @@
-<div class="usuarios">
-    @for (usuario of usuarios; track usuario.id) {
-      <div class="usuario">
-        <h2>{{ usuario.nombre }} {{ usuario.apellidos }}</h2>
-        <p><strong>Rol:</strong> {{ usuario.rol }}</p>
-        <p><strong>Pueblo:</strong> {{ usuario.pueblo?.nombre || 'Sin Pueblo' }}</p>
-      </div>
-    }
-  </div>
-  
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Lista de Usuarios</h2>
+
+  <table class="table table-info table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Rol</th>
+        <th>Pueblo</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(usuario of usuarios; track usuario.id){
+      <tr>
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellidos }}</td>
+        <td>{{ usuario.rol }}</td>
+        <td>{{ usuario.pueblo?.nombre || 'No asignado' }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

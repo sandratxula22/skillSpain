@@ -1,12 +1,28 @@
-<div class="pueblos">
-    @for (pueblo of pueblos; track pueblo.id) {
-      <div class="pueblo">
-        <h2>{{ pueblo.nombre }}</h2>
-        <p><strong>Provincia:</strong> {{ pueblo.provincia.nombre }}</p>
-        <p><strong>Vecinos Censados:</strong> {{ pueblo.num_vecinos_censados }}</p>
-        <p><strong>Personas en Fiestas:</strong> {{ pueblo.num_personas_fiestas }}</p>
-        <p><strong>Personas en Verano:</strong> {{ pueblo.num_personas_verano }}</p>
-      </div>
-    }
-  </div>
-  
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Listado de Pueblos</h2>
+
+  <table class="table table-warning table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Provincia</th>
+        <th>Vecinos Censados</th>
+        <th>Personas en Fiestas</th>
+        <th>Personas en Verano</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(pueblo of pueblos; track pueblo.id){
+      <tr>
+        <td>{{ pueblo.id }}</td>
+        <td>{{ pueblo.nombre }}</td>
+        <td>{{ pueblo.provincia?.nombre }}</td>
+        <td>{{ pueblo.num_vecinos_censados }}</td>
+        <td>{{ pueblo.num_personas_fiestas }}</td>
+        <td>{{ pueblo.num_personas_verano }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

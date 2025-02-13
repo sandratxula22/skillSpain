@@ -1,0 +1,13 @@
+<div class="container my-4">
+    <div class="card">
+        <div class="card-header bg-danger">
+            <h5>{{ noticia.titulo }}</h5>
+        </div>
+        <div class="card-body">
+            <p>{{ noticia.contenido }}</p>
+            <p><strong>Tipo:</strong> {{ noticia.tipo }}</p>
+            <p><strong>Fecha de creación:</strong> {{ noticia.fecha_creacion }}</p>
+            <p><strong>Pueblo:</strong> {{ noticia.pueblo.nombre }}</p>
+        </div>
+    </div>
+</div>

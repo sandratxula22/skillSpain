@@ -1,11 +1,23 @@
-<div class="bailes">
-    @for (baile of bailes; track baile.id) {
-      <div class="baile">
-        <h2>{{ baile.titulo }}</h2>
-        <p><strong>Tipo:</strong> {{ baile.tipo }}</p>
-        <p><strong>Configuración Geométrica:</strong> {{ baile.configuracion_geometrica }}</p>
-        <p><strong>Pueblo:</strong> {{ baile.pueblo.nombre }}</p>
-      </div>
-    }
-  </div>
-  
+<div class="container my-4">
+  <h2 class="text-center">Lista de Bailes</h2>
+  <table class="table table-success table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Configuración Geométrica</th>
+        <th>Pueblo</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(baile of bailes; track baile.id){
+      <tr>
+        <td>{{ baile.id }}</td>
+        <td>{{ baile.tipo }}</td>
+        <td>{{ baile.configuracion_geometrica }}</td>
+        <td>{{ baile.pueblo.nombre }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,13 +1,27 @@
-<div class="inscripciones">
-    @for (inscripcion of inscripciones; track inscripcion.id) {
-      <div class="inscripcion">
-        <h2>Inscripción #{{ inscripcion.id }}</h2>
-        <p><strong>Usuario:</strong> {{ inscripcion.usuario.nombre }}</p>
-        <p><strong>Tipo de Inscripción:</strong> {{ inscripcion.tipo_inscripcion }}</p>
-        <p><strong>Referencia ID:</strong> {{ inscripcion.referencia_id }}</p>
-        <p><strong>Fecha de Alta:</strong> {{ inscripcion.fecha_alta }}</p>
-        <p><strong>Fecha de Baja:</strong> {{ inscripcion.fecha_baja || 'N/A' }}</p>
-      </div>
-    }
-  </div>
-  
+<div class="container my-4">
+  <h2>Lista de Inscripciones</h2>
+  <table class="table table-warning table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Tipo de Inscripción</th>
+        <th>Evento</th>
+        <th>Fecha Alta</th>
+        <th>Fecha Baja</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(inscripcion of inscripciones; track inscripcion.id){
+      <tr>
+        <td>{{ inscripcion.id }}</td>
+        <td>{{ inscripcion.usuario.nombre }} {{ inscripcion.usuario.apellidos }}</td>
+        <td>{{ inscripcion.tipo_inscripcion }}</td>
+        <td>{{ inscripcion.evento.nombre }} ({{ inscripcion.evento.fecha }} a las {{ inscripcion.evento.hora }})</td>
+        <td>{{ inscripcion.fecha_alta }}</td>
+        <td>{{ inscripcion.fecha_baja || 'N/A' }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

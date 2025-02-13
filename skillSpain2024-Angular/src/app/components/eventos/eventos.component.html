@@ -1,12 +1,27 @@
-<div class="eventos">
-    @for (evento of eventos; track evento.id) {
-      <div class="evento">
-        <h2>{{ evento.nombre }}</h2>
-        <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
-        <p><strong>Hora:</strong> {{ evento.hora }}</p>
-        <p><strong>Precio:</strong> {{ evento.precio }}</p>
-        <p><strong>Pueblo:</strong> {{ evento.pueblo.nombre }}</p>
-      </div>
-    }
-  </div>
-  
+<div class="container mt-5">
+  <h2 class="text-center">Lista de Eventos</h2>
+  <table class="table table-success table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Precio</th>
+        <th>Pueblo</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(evento of eventos; track evento.id){
+      <tr>
+        <td>{{ evento.id }}</td>
+        <td>{{ evento.nombre }}</td>
+        <td>{{ evento.fecha }}</td>
+        <td>{{ evento.hora }}</td>
+        <td>{{ evento.precio }}€</td>
+        <td>{{ evento.pueblo.nombre }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,19 +1,20 @@
-<div class="noticias">
-  @for (noticia of noticias; track noticia.id) {
-    <div class="noticia">
-      <h2>{{ noticia.titulo }}</h2>
-      <p><strong>Tipo:</strong> {{ noticia.tipo }}</p>
-      <p><strong>Contenido:</strong> {{ noticia.contenido }}</p>
-      <p><strong>Pueblo:</strong> {{ noticia.pueblo.nombre }}</p>
-      <p><strong>Fecha:</strong> {{ noticia.fecha_creacion }}</p>
-      <button (click) = "mostrar(noticia.id)" class="btn btn-primary">aaaa</button>
+<div class="container my-4">
+  <div class="row">
+    @for (noticia of noticias; track noticia.id) {
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-header bg-danger">
+          <h5>{{ noticia.titulo }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ noticia.contenido }}</p>
+          <p class="card-text"><small class="text-muted">Fecha: {{ noticia.fecha_creacion }}</small></p>
+        </div>
+        <div class="card-footer">
+          <a class="btn btn-primary" routerLink="{{noticia.id}}">Leer más</a>
+        </div>
+      </div>
     </div>
-  }
-</div>
-
-<div>
-    <h2>{{ datos.titulo }}</h2>
-      <p><strong>Tipo:</strong> {{ datos.tipo }}</p>
-      <p><strong>Contenido:</strong> {{ datos.contenido }}</p>
-      <p><strong>Fecha:</strong> {{ datos.fecha_creacion }}</p>
+    }
+  </div>
 </div>
