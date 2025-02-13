@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('usuario_id');
             $table->enum('tipo_inscripcion', ['Evento', 'Baile']);
-            $table->unsignedBigInteger('referencia_id');
+            $table->unsignedBigInteger('eventos_id')->nullable();
+            $table -> foreign("eventos_id") -> references("id")->on("eventos")->onDelete("set null");
+            $table->unsignedBigInteger('bailes_id')->nullable();
+            $table -> foreign("bailes_id") -> references("id")->on("bailes")->onDelete("set null");
             $table->date('fecha_alta');
             $table->date('fecha_baja')->nullable();
             $table->foreign('usuario_id')->references('id')->on('usuarios');
