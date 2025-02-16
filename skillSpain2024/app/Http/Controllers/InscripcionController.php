@@ -18,7 +18,8 @@ class InscripcionController extends Controller
         $data = $request->validate([
             'usuario_id' => 'required|exists:usuarios,id',
             'tipo_inscripcion' => 'required|in:Evento,Baile',
-            'referencia_id' => 'required|integer',
+            'eventos_id' => 'required|integer',
+            'bailes_id' => 'required|integer',
             'fecha_alta' => 'required|date',
             'fecha_baja' => 'nullable|date',
         ]);
@@ -35,7 +36,8 @@ class InscripcionController extends Controller
         $data = $request->validate([
             'usuario_id' => 'exists:usuarios,id',
             'tipo_inscripcion' => 'in:Evento,Baile',
-            'referencia_id' => 'integer',
+            'eventos_id' => 'integer',
+            'bailes_id' => 'integer',
             'fecha_alta' => 'date',
             'fecha_baja' => 'nullable|date',
         ]);

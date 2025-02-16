@@ -147,3 +147,77 @@ INSERT INTO noticias (tipo, titulo, contenido, fecha_creacion, pueblo_id, create
 ('Información', 'Noticia Información 1', 'Contenido información 1', '2025-02-12', 3, NOW(), NOW()),
 ('Evento', 'Noticia Evento 1', 'Contenido evento 1', '2025-02-13', 4, NOW(), NOW()),
 ('Aviso', 'Noticia Aviso 2', 'Contenido aviso 2', '2025-02-14', 5, NOW(), NOW());
+
+
+
+
+---------------------------------------
+INSERT INTO provincias (nombre, created_at, updated_at) VALUES 
+('Madrid', NOW(), NOW()),
+('Barcelona', NOW(), NOW()),
+('Sevilla', NOW(), NOW()),
+('Valencia', NOW(), NOW()),
+('Bilbao', NOW(), NOW());
+
+INSERT INTO pueblos (nombre, provincia_id, num_vecinos_censados, num_personas_fiestas, num_personas_verano, alcalde_id, created_at, updated_at) VALUES 
+('Alcalá de Henares', 1, 200000, 50000, 70000, NULL, NOW(), NOW()),
+('Mataró', 2, 120000, 30000, 40000, NULL, NOW(), NOW()),
+('Utrera', 3, 80000, 20000, 30000, NULL, NOW(), NOW()),
+('Gandía', 4, 75000, 15000, 25000, NULL, NOW(), NOW()),
+('Getxo', 5, 60000, 10000, 20000, NULL, NOW(), NOW());
+INSERT INTO usuarios (nombre, apellidos, rol, pueblo_id, created_at, updated_at) VALUES 
+-- Alcaldes
+('Juan', 'Pérez', 'Alcalde', 1, NOW(), NOW()),
+('Maria', 'Gómez', 'Alcalde', 2, NOW(), NOW()),
+('Carlos', 'Fernández', 'Alcalde', 3, NOW(), NOW()),
+('Laura', 'Ruiz', 'Alcalde', 4, NOW(), NOW()),
+('Pedro', 'López', 'Alcalde', 5, NOW(), NOW()),
+
+-- Ciudadanos
+('Ana', 'Martínez', 'Ciudadano', 1, NOW(), NOW()),
+('David', 'Sánchez', 'Ciudadano', 2, NOW(), NOW()),
+('Sofía', 'Díaz', 'Ciudadano', 3, NOW(), NOW()),
+('Javier', 'Moreno', 'Ciudadano', 4, NOW(), NOW()),
+('Elena', 'Torres', 'Ciudadano', 5, NOW(), NOW()),
+
+-- Administradores (Sin pueblo asignado)
+('Admin1', 'Super', 'Administrador', NULL, NOW(), NOW()),
+('Admin2', 'Gestor', 'Administrador', NULL, NOW(), NOW());
+
+UPDATE pueblos SET alcalde_id = (SELECT id FROM usuarios WHERE pueblo_id = 1 AND rol = 'Alcalde') WHERE id = 1;
+UPDATE pueblos SET alcalde_id = (SELECT id FROM usuarios WHERE pueblo_id = 2 AND rol = 'Alcalde') WHERE id = 2;
+UPDATE pueblos SET alcalde_id = (SELECT id FROM usuarios WHERE pueblo_id = 3 AND rol = 'Alcalde') WHERE id = 3;
+UPDATE pueblos SET alcalde_id = (SELECT id FROM usuarios WHERE pueblo_id = 4 AND rol = 'Alcalde') WHERE id = 4;
+UPDATE pueblos SET alcalde_id = (SELECT id FROM usuarios WHERE pueblo_id = 5 AND rol = 'Alcalde') WHERE id = 5;
+
+-- Insertar en la tabla 'bailes'
+INSERT INTO bailes (tipo, configuracion_geometrica, pueblo_id, created_at, updated_at) VALUES
+('Individual', 'Fila', 1, NOW(), NOW()),
+('Pareja', 'Circunferencia', 2, NOW(), NOW()),
+('Grupo', 'Rombo', 3, NOW(), NOW()),
+('Individual', 'Cuadrado', 4, NOW(), NOW()),
+('Pareja', 'Fila', 5, NOW(), NOW());
+
+-- Insertar en la tabla 'eventos'
+INSERT INTO eventos (nombre, fecha, hora, precio, pueblo_id, created_at, updated_at) VALUES
+('Festival de Música', '2024-06-15', '18:00:00', 25.50, 1, NOW(), NOW()),
+('Feria de Artesanía', '2024-07-20', '10:00:00', 10.00, 2, NOW(), NOW()),
+('Concierto de Rock', '2024-08-05', '20:00:00', 30.00, 3, NOW(), NOW()),
+('Exposición de Arte', '2024-09-10', '09:00:00', 15.00, 4, NOW(), NOW()),
+('Teatro al Aire Libre', '2024-10-25', '19:00:00', 20.00, 5, NOW(), NOW());
+
+-- Insertar en la tabla 'inscripciones'
+INSERT INTO inscripciones (usuario_id, tipo_inscripcion, eventos_id, bailes_id, fecha_alta, fecha_baja, created_at, updated_at) VALUES
+(1, 'Evento', 1, NULL, '2024-01-01', NULL, NOW(), NOW()),
+(2, 'Baile', NULL, 1, '2024-01-02', NULL, NOW(), NOW()),
+(3, 'Evento', 2, NULL, '2024-01-03', NULL, NOW(), NOW()),
+(4, 'Baile', NULL, 2, '2024-01-04', NULL, NOW(), NOW()),
+(5, 'Evento', 3, NULL, '2024-01-05', NULL, NOW(), NOW());
+
+-- Insertar en la tabla 'noticias'
+INSERT INTO noticias (tipo, titulo, contenido, fecha_creacion, pueblo_id, created_at, updated_at) VALUES
+('Urgente', 'Apertura del Festival de Música', 'El festival de música abrirá sus puertas el 15 de junio.', '2024-06-15', 1, NOW(), NOW()),
+('Aviso', 'Feria de Artesanía en Medina', 'La feria de artesanía se celebrará el 20 de julio en Medina del Campo.', '2024-07-20', 2, NOW(), NOW()),
+('Información', 'Concierto de Rock en Tordesillas', 'El concierto de rock tendrá lugar el 5 de agosto.', '2024-08-05', 3, NOW(), NOW()),
+('Evento', 'Exposición de Arte en Simancas', 'La exposición de arte se inaugurará el 10 de septiembre.', '2024-09-10', 4, NOW(), NOW()),
+('Aviso', 'Teatro al Aire Libre en Olmedo', 'El teatro al aire libre se realizará el 25 de octubre.', '2024-10-25', 5, NOW(), NOW());

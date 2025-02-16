@@ -17,6 +17,6 @@ class Evento extends Model
 
     public function inscripciones()
     {
-        return $this->hasMany(Inscripcion::class);
+        return $this->hasMany(Inscripcione::class);
     }
 }

@@ -18,11 +18,11 @@ class Inscripcione extends Model
 
     public function evento()
     {
-        return $this->belongsTo(Evento::class, 'referencia_id');
+        return $this->belongsTo(Evento::class, 'eventos_id');
     }
 
     public function baile()
     {
-        return $this->belongsTo(Baile::class, 'referencia_id');
+        return $this->belongsTo(Baile::class, 'bailes_id');
     }
 }

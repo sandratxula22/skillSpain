@@ -9,7 +9,7 @@ class Pueblo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'provincia_id', 'num_vecinos_censados', 'num_personas_fiestas', 'num_personas_verano'];
+    protected $fillable = ['nombre', 'provincia_id', 'num_vecinos_censados', 'num_personas_fiestas', 'num_personas_verano', 'alcalde_id'];
 
     public function provincia()
     {
@@ -34,5 +34,9 @@ class Pueblo extends Model
     public function noticias()
     {
         return $this->hasMany(Noticia::class);
+    }
+    public function alcalde()
+    {
+        return $this->belongsTo(Usuario::class, 'alcalde_id');
     }
 }

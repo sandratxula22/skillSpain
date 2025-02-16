@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Pueblo;
 
+use App\Models\Pueblo;
 use Illuminate\Http\Request;
 
 class PuebloController extends Controller
 {
     public function index()
     {
-        return Pueblo::with('provincia')->get();
+        return Pueblo::with(['provincia', 'alcalde', 'usuarios', 'eventos', 'bailes', 'noticias'])->get();
     }
 
     public function store(Request $request)
@@ -20,13 +20,14 @@ class PuebloController extends Controller
             'num_vecinos_censados' => 'required|integer',
             'num_personas_fiestas' => 'required|integer',
             'num_personas_verano' => 'required|integer',
+            'alcalde_id' => 'nullable|exists:usuarios,id',
         ]);
         return Pueblo::create($data);
     }
 
     public function show($id)
     {
-        return Pueblo::with(['provincia', 'usuarios', 'eventos', 'bailes', 'noticias'])->findOrFail($id);
+        return Pueblo::with(['provincia', 'alcalde', 'usuarios', 'eventos', 'bailes', 'noticias'])->findOrFail($id);
     }
 
     public function update(Request $request, $id)
@@ -37,6 +38,7 @@ class PuebloController extends Controller
             'num_vecinos_censados' => 'integer',
             'num_personas_fiestas' => 'integer',
             'num_personas_verano' => 'integer',
+            'alcalde_id' => 'nullable|exists:usuarios,id',
         ]);
         $pueblo = Pueblo::findOrFail($id);
         $pueblo->update($data);
