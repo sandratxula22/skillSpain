@@ -1,0 +1,38 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5">Sign in</h3>
+                        <form [formGroup]="formularioLogin" (ngSubmit)="submit()">
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="nombre">Nombre</label>
+                                <input type="text" id="nombre" class="form-control form-control-lg" formControlName="nombre" />
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="pueblo">Pueblo</label>
+                                <input type="text" id="pueblo" class="form-control form-control-lg" formControlName="pueblo"/>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="rol">Rol</label>
+                                <select id="rol" class="form-select form-select-lg mb-4" formControlName="rol">
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Alcalde">Alcalde</option>
+                                    <option value="Ciudadano">Ciudadano</option>
+                                </select>
+                            </div>
+
+                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" [disabled]="formularioLogin.invalid">
+                                Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

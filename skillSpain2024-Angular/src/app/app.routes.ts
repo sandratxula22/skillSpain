@@ -7,10 +7,11 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { BailesComponent } from './components/bailes/bailes.component';
 import { InscripcionesComponent } from './components/inscripciones/inscripciones.component';
 import { NoticiaDetailComponent } from './components/noticia-detail/noticia-detail.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 export const routes: Routes = [
-    { path: '', component: NoticiasComponent }, // Redirige a Noticias como ruta principal
+    { path: '', component: LoginComponent },
     { path: 'noticias', component: NoticiasComponent },
     { path: 'noticias/:id', component: NoticiaDetailComponent }, // Ruta dinámica para los detalles de la noticia
     { path: 'provincias', component: ProvinciasComponent },
@@ -20,5 +21,4 @@ export const routes: Routes = [
     { path: 'bailes', component: BailesComponent },
     { path: 'inscripciones', component: InscripcionesComponent },
     { path: '**', redirectTo: '/noticias' }, // Manejo de rutas no existentes
-
 ];
