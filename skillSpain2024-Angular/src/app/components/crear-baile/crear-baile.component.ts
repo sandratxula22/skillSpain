@@ -20,21 +20,12 @@ import { FooterComponent } from '../footer/footer.component';
 export class CrearBaileComponent {
   pueblos: any[] = [];
   datos: any;
-  token: string = '';
   constructor(private pueblosService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.pueblosService.getAll('pueblos').subscribe((data) => {
       this.pueblos = data;
     });
-    this.pueblosService.getToken().subscribe(
-      (data) => {
-        this.token = data.csrfToken;
-      },
-      (error) => {
-        console.error('Error en getToken:', error);
-      }
-    );
   }
 
   formularioBaile = new FormGroup({

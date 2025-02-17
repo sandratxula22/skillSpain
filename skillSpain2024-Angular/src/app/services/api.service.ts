@@ -10,9 +10,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getToken() {
-    return this.http.get<any>(`${this.baseUrl}/csrf-token`);
-  }
   // Métodos generales
   getAll(endpoint: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/${endpoint}`);
