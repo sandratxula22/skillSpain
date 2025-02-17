@@ -21,3 +21,7 @@ Route::apiResource('eventos', EventoController::class);
 Route::apiResource('bailes', BaileController::class);
 Route::apiResource('inscripciones', InscripcionController::class);
 Route::apiResource('noticias', NoticiaController::class);
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
+});

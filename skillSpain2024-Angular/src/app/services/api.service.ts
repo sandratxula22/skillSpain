@@ -6,17 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ApiService {
-
-
-  private headers = new HttpHeaders({
-    'X-CSRF-TOKEN': 'aquí-va-tu-token', // Laravel espera este token
-    'Content-Type': 'application/json'
-  });
-
   private baseUrl = 'http://127.0.0.1:8000'; // Cambia esto según la URL base de tu backend
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
+  getToken() {
+    return this.http.get<any>(`${this.baseUrl}/csrf-token`);
+  }
   // Métodos generales
   getAll(endpoint: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/${endpoint}`);
@@ -26,9 +22,11 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/${endpoint}/${id}`);
   }
 
-  create(endpoint: string, data: any): Observable<any> {
+  create(endpoint: string, data: any, token: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/${endpoint}`, data, {
-      withCredentials: true
+      headers: {
+        'X-CSRF-TOKEN': token,
+      },
     });
   }
 
@@ -49,8 +47,8 @@ export class ApiService {
     return this.getOne('provincias', id);
   }
 
-  createProvincia(data: any): Observable<any> {
-    return this.create('provincias', data);
+  createProvincia(data: any, token: string): Observable<any> {
+    return this.create('provincias', data, token);
   }
 
   updateProvincia(id: number, data: any): Observable<any> {
@@ -70,8 +68,8 @@ export class ApiService {
     return this.getOne('pueblos', id);
   }
 
-  createPueblo(data: any): Observable<any> {
-    return this.create('pueblos', data);
+  createPueblo(data: any, token: string): Observable<any> {
+    return this.create('pueblos', data, token);
   }
 
   updatePueblo(id: number, data: any): Observable<any> {
@@ -91,8 +89,8 @@ export class ApiService {
     return this.getOne('usuarios', id);
   }
 
-  createUsuario(data: any): Observable<any> {
-    return this.create('usuarios', data);
+  createUsuario(data: any, token: string): Observable<any> {
+    return this.create('usuarios', data, token);
   }
 
   updateUsuario(id: number, data: any): Observable<any> {
@@ -112,8 +110,8 @@ export class ApiService {
     return this.getOne('eventos', id);
   }
 
-  createEvento(data: any): Observable<any> {
-    return this.create('eventos', data);
+  createEvento(data: any, token: string): Observable<any> {
+    return this.create('eventos', data, token);
   }
 
   updateEvento(id: number, data: any): Observable<any> {
@@ -133,8 +131,8 @@ export class ApiService {
     return this.getOne('bailes', id);
   }
 
-  createBaile(data: any): Observable<any> {
-    return this.create('bailes', data);
+  createBaile(data: any, token: string): Observable<any> {
+    return this.create('bailes', data, token);
   }
 
   updateBaile(id: number, data: any): Observable<any> {
@@ -154,8 +152,8 @@ export class ApiService {
     return this.getOne('inscripciones', id);
   }
 
-  createInscripcion(data: any): Observable<any> {
-    return this.create('inscripciones', data);
+  createInscripcion(data: any, token: string): Observable<any> {
+    return this.create('inscripciones', data, token);
   }
 
   updateInscripcion(id: number, data: any): Observable<any> {
@@ -175,8 +173,8 @@ export class ApiService {
     return this.getOne('noticias', id);
   }
 
-  createNoticia(data: any): Observable<any> {
-    return this.create('noticias', data);
+  createNoticia(data: any, token: string): Observable<any> {
+    return this.create('noticias', data, token);
   }
 
   updateNoticia(id: number, data: any): Observable<any> {

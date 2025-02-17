@@ -1,34 +1,31 @@
 <?php
-
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Cross-Origin Resource Sharing (CORS) Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure your settings for cross-origin resource sharing
-    | or "CORS". This determines what cross-origin operations may execute
-    | in web browsers. You are free to adjust these settings as needed.
-    |
-    | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-    |
-    */
+/*
+|----------------------------------------------------------------------
+| Cross-Origin Resource Sharing (CORS) Configuration
+|----------------------------------------------------------------------
+|
+| Aquí puedes configurar los ajustes para compartir recursos entre orígenes
+| o "CORS". Esto determina qué operaciones entre orígenes pueden ejecutarse
+| en los navegadores web. Puedes ajustar esta configuración según sea necesario.
+|
+*/
 
-    'paths' => ['*', 'sanctum/csrf-cookie'],
+'paths' => ['*'],  // Permite todas las rutas de la API y las rutas de la web
 
-    'allowed_methods' => ['*'],
+'allowed_methods' => ['*'],  // Permite todos los métodos HTTP (GET, POST, etc.)
 
-    'allowed_origins' => ['http://localhost:4200'],
+'allowed_origins' => ['http://localhost:4200'],  // Solo permite solicitudes de tu frontend en localhost:4200
 
-    'allowed_origins_patterns' => ['*'],
+'allowed_origins_patterns' => ['*'],  // Permite cualquier patrón de origen (si es necesario)
 
-    'allowed_headers' => ['*'],
+'allowed_headers' => ['*'],  // Permite todas las cabeceras HTTP
 
-    'exposed_headers' => [],
+'exposed_headers' => [],  // Puedes exponer cabeceras si lo necesitas (no es necesario aquí)
 
-    'max_age' => 0,
+'max_age' => 0,  // Configura el tiempo en que los resultados de CORS se cachean (en segundos)
 
-    'supports_credentials' => true,
+'supports_credentials' => true,  // Permite el envío de credenciales (cookies y encabezados de autenticación)
 
 ];
