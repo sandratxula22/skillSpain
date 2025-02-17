@@ -28,14 +28,13 @@
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="pueblo">Pueblo</label>
-                                <select id="pueblo" class="form-select form-select-lg mb-4" formControlName="pueblo">
+                                <label class="form-label" for="pueblo_id">Pueblo</label>
+                                <select id="pueblo_id" class="form-select form-select-lg mb-4" formControlName="pueblo_id">
                                     @for(pueblo of pueblos; track pueblo.id){
                                         <option value="{{ pueblo.id }}">{{ pueblo.nombre }}</option>
                                     }
                                 </select>
                             </div>
-                            <input type="hidden" name="_token" value="{{ token }}">
 
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" [disabled]="formularioBaile.invalid">
                                 Crear

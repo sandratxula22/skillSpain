@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -22,12 +22,8 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/${endpoint}/${id}`);
   }
 
-  create(endpoint: string, data: any, token: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/${endpoint}`, data, {
-      headers: {
-        'X-CSRF-TOKEN': token,
-      },
-    });
+  create(endpoint: string, data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/${endpoint}`, data);
   }
 
   update(endpoint: string, id: number, data: any): Observable<any> {
@@ -47,8 +43,8 @@ export class ApiService {
     return this.getOne('provincias', id);
   }
 
-  createProvincia(data: any, token: string): Observable<any> {
-    return this.create('provincias', data, token);
+  createProvincia(data: any): Observable<any> {
+    return this.create('provincias', data);
   }
 
   updateProvincia(id: number, data: any): Observable<any> {
@@ -68,8 +64,8 @@ export class ApiService {
     return this.getOne('pueblos', id);
   }
 
-  createPueblo(data: any, token: string): Observable<any> {
-    return this.create('pueblos', data, token);
+  createPueblo(data: any): Observable<any> {
+    return this.create('pueblos', data);
   }
 
   updatePueblo(id: number, data: any): Observable<any> {
@@ -89,8 +85,8 @@ export class ApiService {
     return this.getOne('usuarios', id);
   }
 
-  createUsuario(data: any, token: string): Observable<any> {
-    return this.create('usuarios', data, token);
+  createUsuario(data: any): Observable<any> {
+    return this.create('usuarios', data);
   }
 
   updateUsuario(id: number, data: any): Observable<any> {
@@ -111,7 +107,7 @@ export class ApiService {
   }
 
   createEvento(data: any, token: string): Observable<any> {
-    return this.create('eventos', data, token);
+    return this.create('eventos', data);
   }
 
   updateEvento(id: number, data: any): Observable<any> {
@@ -131,8 +127,8 @@ export class ApiService {
     return this.getOne('bailes', id);
   }
 
-  createBaile(data: any, token: string): Observable<any> {
-    return this.create('bailes', data, token);
+  createBaile(data: any): Observable<any> {
+    return this.create('bailes', data);
   }
 
   updateBaile(id: number, data: any): Observable<any> {
@@ -152,8 +148,8 @@ export class ApiService {
     return this.getOne('inscripciones', id);
   }
 
-  createInscripcion(data: any, token: string): Observable<any> {
-    return this.create('inscripciones', data, token);
+  createInscripcion(data: any): Observable<any> {
+    return this.create('inscripciones', data);
   }
 
   updateInscripcion(id: number, data: any): Observable<any> {
@@ -173,8 +169,8 @@ export class ApiService {
     return this.getOne('noticias', id);
   }
 
-  createNoticia(data: any, token: string): Observable<any> {
-    return this.create('noticias', data, token);
+  createNoticia(data: any): Observable<any> {
+    return this.create('noticias', data);
   }
 
   updateNoticia(id: number, data: any): Observable<any> {
