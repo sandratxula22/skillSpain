@@ -1,10 +1,10 @@
+<app-navbar></app-navbar>
 <div class="container mt-5">
   <h2 class="text-center mb-4">Listado de Pueblos</h2>
 
-  <table class="table table-warning table-bordered table-striped">
+  <table class="table table-bordered table-striped">
     <thead class="table-dark">
       <tr>
-        <th>#</th>
         <th>Nombre</th>
         <th>Provincia</th>
         <th>Vecinos Censados</th>
@@ -16,7 +16,6 @@
     <tbody>
       @for(pueblo of pueblos; track pueblo.id){
       <tr>
-        <td>{{ pueblo.id }}</td>
         <td>{{ pueblo.nombre }}</td>
         <td>{{ pueblo.provincia?.nombre }}</td>
         <td>{{ pueblo.num_vecinos_censados }}</td>
@@ -28,3 +27,4 @@
     </tbody>
   </table>
 </div>
+<app-footer></app-footer>

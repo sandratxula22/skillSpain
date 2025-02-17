@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { RouterLink } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-noticias',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NavbarComponent, FooterComponent],
   templateUrl: './noticias.component.html',
   styleUrls: ['./noticias.component.css']
 })

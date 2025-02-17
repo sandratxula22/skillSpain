@@ -1,10 +1,10 @@
+<app-navbar></app-navbar>
 <div class="container mt-4">
   <h2 class="text-center mb-4">Lista de Usuarios</h2>
 
-  <table class="table table-info table-bordered table-striped">
+  <table class="table table-bordered table-striped">
     <thead class="table-dark">
       <tr>
-        <th>ID</th>
         <th>Nombre</th>
         <th>Apellidos</th>
         <th>Rol</th>
@@ -14,7 +14,6 @@
     <tbody>
       @for(usuario of usuarios; track usuario.id){
       <tr>
-        <td>{{ usuario.id }}</td>
         <td>{{ usuario.nombre }}</td>
         <td>{{ usuario.apellidos }}</td>
         <td>{{ usuario.rol }}</td>
@@ -24,3 +23,4 @@
     </tbody>
   </table>
 </div>
+<app-footer></app-footer>

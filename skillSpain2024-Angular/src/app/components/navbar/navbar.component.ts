@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  session: string | null;
 
+  constructor(){
+    this.session = localStorage.getItem('session');
+    console.log(this.session);
+  }
 }

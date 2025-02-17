@@ -37,6 +37,7 @@ export class LoginComponent {
       this.respuesta.forEach(element => {
         if(element.nombre == this.datos.nombre && element.rol == this.datos.rol && element.pueblo.nombre == this.datos.pueblo){
           localStorage.setItem("session", element.rol);
+          localStorage.setItem("id", ''+element.id);
           this.router.navigate(['/noticias']);
         }
       });

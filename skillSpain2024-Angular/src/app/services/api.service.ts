@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+
+
+  private headers = new HttpHeaders({
+    'X-CSRF-TOKEN': 'aquí-va-tu-token', // Laravel espera este token
+    'Content-Type': 'application/json'
+  });
+
   private baseUrl = 'http://127.0.0.1:8000'; // Cambia esto según la URL base de tu backend
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Métodos generales
   getAll(endpoint: string): Observable<any[]> {
@@ -20,7 +27,9 @@ export class ApiService {
   }
 
   create(endpoint: string, data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/${endpoint}`, data);
+    return this.http.post<any>(`${this.baseUrl}/${endpoint}`, data, {
+      withCredentials: true
+    });
   }
 
   update(endpoint: string, id: number, data: any): Observable<any> {

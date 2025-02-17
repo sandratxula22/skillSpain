@@ -8,6 +8,7 @@ import { BailesComponent } from './components/bailes/bailes.component';
 import { InscripcionesComponent } from './components/inscripciones/inscripciones.component';
 import { NoticiaDetailComponent } from './components/noticia-detail/noticia-detail.component';
 import { LoginComponent } from './components/login/login.component';
+import { CrearBaileComponent } from './components/crear-baile/crear-baile.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'usuarios', component: UsuariosComponent },
     { path: 'eventos', component: EventosComponent },
     { path: 'bailes', component: BailesComponent },
+    { path: 'crearBaile', component: CrearBaileComponent},
     { path: 'inscripciones', component: InscripcionesComponent },
     { path: '**', redirectTo: '/noticias' }, // Manejo de rutas no existentes
 ];
