@@ -1,55 +1,77 @@
 <app-navbar></app-navbar>
-<section class="min-vh-100" style="background-color: #508bfc;">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+<section class="min-vh-100" style="background-color: #508bfc">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5">Crear Noticia</h3>
+            <form [formGroup]="formularioNoticia" (ngSubmit)="submit()">
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="tipo">Tipo</label>
+                <select
+                  id="tipo"
+                  class="form-select form-select-lg mb-4"
+                  formControlName="tipo"
+                >
+                  <option value="Urgente">Urgente</option>
+                  <option value="Aviso">Aviso</option>
+                  <option value="Información">Información</option>
+                  <option value="Evento">Evento</option>
+                </select>
+              </div>
 
-                        <h3 class="mb-5">Crear Noticia</h3>
-                        <form [formGroup]="formularioNoticia" (ngSubmit)="submit()">
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="tipo">Tipo</label>
-                                <select id="tipo" class="form-select form-select-lg mb-4" formControlName="tipo">
-                                    <option value="Urgente">Urgente</option>
-                                    <option value="Aviso">Aviso</option>
-                                    <option value="Información">Información</option>
-                                    <option value="Evento">Evento</option>
-                                </select>
-                            </div>
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="titulo">Título</label>
+                <input
+                  type="text"
+                  id="titulo"
+                  class="form-control form-control-lg"
+                  formControlName="titulo"
+                />
+              </div>
 
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="titulo">Título</label>
-                                <input type="text" id="titulo" class="form-control form-control-lg" formControlName="titulo"/>
-                            </div>
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="contenido">Contenido</label>
+                <textarea
+                  id="contenido"
+                  class="form-control form-control-lg"
+                  formControlName="contenido"
+                  rows="4"
+                ></textarea>
+              </div>
 
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="contenido">Contenido</label>
-                                <textarea id="contenido" class="form-control form-control-lg" formControlName="contenido" rows="4"></textarea>
-                            </div>
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="pueblo_id">Pueblo</label>
+                <select
+                  id="pueblo_id"
+                  class="form-select form-select-lg mb-4"
+                  formControlName="pueblo_id"
+                >
+                  @if(session == 'Administrador'){ @for(pueblo of pueblos; track
+                  pueblo.id){
+                  <option value="{{ pueblo.id }}">{{ pueblo.nombre }}</option>
+                  } } @if(session == 'Alcalde'){
+                  <option value="{{ usuario?.pueblo?.id }}">
+                    {{ usuario?.pueblo?.nombre }}
+                  </option>
+                  }
+                </select>
+              </div>
 
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="pueblo_id">Pueblo</label>
-                                <select id="pueblo_id" class="form-select form-select-lg mb-4" formControlName="pueblo_id">
-                                    @if(session == 'Administrador'){
-                                        @for(pueblo of pueblos; track pueblo.id){
-                                            <option value="{{ pueblo.id }}">{{ pueblo.nombre }}</option>
-                                        }
-                                    }
-                                    @if(session == 'Alcalde'){
-                                        <option value="{{ usuario?.pueblo?.id }}">{{ usuario?.pueblo?.nombre }}</option>
-                                    }
-                                </select>
-                            </div>
-
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" [disabled]="formularioNoticia.invalid">
-                                Crear
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+              <button
+                data-mdb-button-init
+                data-mdb-ripple-init
+                class="btn btn-primary btn-lg btn-block"
+                [disabled]="formularioNoticia.invalid"
+              >
+                Crear
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 <app-footer></app-footer>
