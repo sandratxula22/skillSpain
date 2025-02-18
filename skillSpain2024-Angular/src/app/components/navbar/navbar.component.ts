@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,8 +12,13 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   session: string | null;
 
-  constructor(){
+  constructor(private apiService: ApiService, private router: Router) {
     this.session = localStorage.getItem('session');
     console.log(this.session);
+  }
+
+  onLogout(){
+    this.apiService.logout();
+    this.router.navigate(['/']);
   }
 }

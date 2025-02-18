@@ -13,8 +13,14 @@
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <label class="form-label" for="pueblo">Pueblo</label>
-                                <input type="text" id="pueblo" class="form-control form-control-lg" formControlName="pueblo"/>
+                                <label class="form-label" for="pueblo_id">Pueblo</label>
+                                
+                                <select id="pueblo_id" class="form-select form-select-lg mb-4" formControlName="pueblo_id">
+                                    <option value="1" selected>...</option>
+                                    @for(pueblo of pueblos; track pueblo.id){
+                                        <option value="{{ pueblo.id }}">{{ pueblo.nombre }}</option>
+                                    }
+                                </select>
                             </div>
 
                             <div data-mdb-input-init class="form-outline mb-4">

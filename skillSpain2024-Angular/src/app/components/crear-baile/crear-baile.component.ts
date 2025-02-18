@@ -20,7 +20,7 @@ import { FooterComponent } from '../footer/footer.component';
 export class CrearBaileComponent {
   pueblos: any[] = [];
   datos: any;
-  constructor(private pueblosService: ApiService, private router: Router) {}
+  constructor(private pueblosService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.pueblosService.getAll('pueblos').subscribe((data) => {
@@ -41,14 +41,13 @@ export class CrearBaileComponent {
         '' + this.formularioBaile.value.configuracion_geometrica,
       pueblo_id: '' + this.formularioBaile.value.pueblo_id,
     };
-    this.pueblosService.create('bailes', this.datos).subscribe(
-      (response) => {
-        console.log(response);
+    this.pueblosService.create('bailes', this.datos).subscribe({
+      next: (response) => {
+        console.log('Baile creado:', response);
       },
-      (error) => {
-        console.error('Error en createBaile:', error);
+      error: (error) => {
+        console.error('Error al crear el baile:', error);
       }
-    );
+    });
   }
-  
 }

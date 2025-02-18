@@ -1,21 +1,20 @@
 <app-navbar></app-navbar>
 <div class="container my-4">
   <h2>Lista de Inscripciones</h2>
-  <table class="table table-warning table-bordered table-striped">
+  <table class="table table-bordered table-striped">
     <thead class="table-dark">
       <tr>
-        <th>ID</th>
         <th>Usuario</th>
         <th>Tipo de Inscripción</th>
         <th>Evento / Baile</th>
         <th>Fecha Alta</th>
         <th>Fecha Baja</th>
+        <th>Eliminar</th>
       </tr>
     </thead>
     <tbody>
       @for(inscripcion of inscripciones; track inscripcion.id) {
       <tr>
-        <td>{{ inscripcion.id }}</td>
         <td>{{ inscripcion.usuario.nombre }} {{ inscripcion.usuario.apellidos }}</td>
         <td>{{ inscripcion.tipo_inscripcion }}</td>
         <td>
@@ -27,6 +26,11 @@
         </td>
         <td>{{ inscripcion.fecha_alta }}</td>
         <td>{{ inscripcion.fecha_baja || 'N/A' }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="borrar(inscripcion.id)">
+            Borrar
+          </button>
+        </td>
       </tr>
       }
     </tbody>

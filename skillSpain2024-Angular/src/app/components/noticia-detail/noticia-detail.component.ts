@@ -14,12 +14,12 @@ import { FooterComponent } from '../footer/footer.component';
 
 export class NoticiaDetailComponent implements OnInit {
   noticiaId: number = 1;
-  noticia: any; // Aquí almacenarás la noticia cargada
+  noticia: any = {};
 
   constructor(
     private route: ActivatedRoute,
-    private noticiasService: ApiService // El servicio que obtiene la noticia por ID
-  ) {}
+    private noticiasService: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.noticiaId = +this.route.snapshot.paramMap.get('id')!; // Obtiene el id de la noticia desde la URL
@@ -27,13 +27,13 @@ export class NoticiaDetailComponent implements OnInit {
   }
 
   loadNoticiaDetails(): void {
-    this.noticiasService.getNoticia(this.noticiaId).subscribe(
-      (data) => {
+    this.noticiasService.getNoticia(this.noticiaId).subscribe({
+      next: (data) => {
         this.noticia = data;
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al cargar los detalles de la noticia', error);
       }
-    );
+    });
   }
 }

@@ -7,6 +7,10 @@
         <th>Tipo</th>
         <th>Configuración Geométrica</th>
         <th>Pueblo</th>
+        <th>Inscribirse</th>
+        @if(session == "Administrador"){
+          <th>Editar</th>
+        }
       </tr>
     </thead>
     <tbody>
@@ -15,6 +19,18 @@
         <td>{{ baile.tipo }}</td>
         <td>{{ baile.configuracion_geometrica }}</td>
         <td>{{ baile.pueblo.nombre }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="inscribir(baile.id)">
+            Inscribirse
+          </button>
+        </td>
+        @if(session == "Administrador"){
+          <td>
+            <button class="btn btn-warning" (click)="editar(baile.id)">
+              Editar
+            </button>
+          </td>
+        }
       </tr>
       }
     </tbody>

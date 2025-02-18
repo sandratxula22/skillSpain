@@ -9,6 +9,10 @@
         <th>Hora</th>
         <th>Precio</th>
         <th>Pueblo</th>
+        <th>Inscribirse</th>
+        @if(session == "Administrador"){
+          <th>Editar</th>
+        }
       </tr>
     </thead>
     <tbody>
@@ -19,6 +23,18 @@
         <td>{{ evento.hora }}</td>
         <td>{{ evento.precio }}€</td>
         <td>{{ evento.pueblo.nombre }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="inscribir(evento.id)">
+            Inscribirse
+          </button>
+        </td>
+        @if(session == "Administrador"){
+          <td>
+            <button class="btn btn-warning" (click)="editar(evento.id)">
+              Editar
+            </button>
+          </td>
+        }
       </tr>
       }
     </tbody>

@@ -12,12 +12,20 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class InscripcionesComponent implements OnInit {
   inscripciones: any[] = [];
+  usuarioId = localStorage.getItem("id");
 
   constructor(private inscripcionesService: ApiService) { }
 
   ngOnInit(): void {
     this.inscripcionesService.getAll("inscripciones").subscribe(data => {
-      this.inscripciones = data;
+      this.inscripciones = data.filter(inscripcion => inscripcion.usuario_id == this.usuarioId);
     });
+  }
+
+  borrar(id: number){
+    this.inscripcionesService.deleteInscripcion(id).subscribe(data =>{
+      console.log("borrado");
+      this.inscripciones = this.inscripciones.filter(inscripcion => inscripcion.id !== id);
+    })
   }
 }

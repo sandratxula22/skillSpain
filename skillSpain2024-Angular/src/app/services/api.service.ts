@@ -177,4 +177,10 @@ export class ApiService {
   deleteNoticia(id: number): Observable<any> {
     return this.delete('noticias', id);
   }
+
+  //logout
+  logout() {
+    localStorage.removeItem('session');
+    localStorage.removeItem('id');
+  }
 }

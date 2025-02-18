@@ -9,7 +9,7 @@ class Inscripcione extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['usuario_id', 'tipo_inscripcion', 'referencia_id', 'fecha_alta', 'fecha_baja'];
+    protected $fillable = ['usuario_id', 'tipo_inscripcion', 'eventos_id', 'bailes_id', 'fecha_alta', 'fecha_baja'];
 
     public function usuario()
     {

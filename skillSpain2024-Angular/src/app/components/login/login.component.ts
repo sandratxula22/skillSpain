@@ -15,27 +15,38 @@ import { Usuarios } from '../../usuarios';
 export class LoginComponent {
   datos: any;
   respuesta: Usuarios[] = [];
+  pueblos: any[] = [];
   constructor(private login: ApiService, private router: Router) {
     this.comprobarLogin();
+  }
+
+  ngOnInit(): void {
+    this.login.getAll("pueblos").subscribe(data => {
+      this.pueblos = data;
+    });
   }
 
   formularioLogin = new FormGroup({
     nombre: new FormControl('', Validators.required),
     rol: new FormControl('', Validators.required),
-    pueblo: new FormControl('', Validators.required)
+    pueblo_id: new FormControl('1', Validators.required)
   });
 
   submit() {
     this.datos = {
       nombre: '' + this.formularioLogin.value.nombre,
       rol: '' + this.formularioLogin.value.rol,
-      pueblo: '' + this.formularioLogin.value.pueblo,
+      pueblo_id: '' + this.formularioLogin.value.pueblo_id,
     };
 
     this.login.getUsuarios().subscribe(data => {
       this.respuesta = data;
       this.respuesta.forEach(element => {
-        if(element.nombre == this.datos.nombre && element.rol == this.datos.rol && element.pueblo.nombre == this.datos.pueblo){
+        if(element.nombre == this.datos.nombre && element.rol == this.datos.rol && element.rol == 'Administrador'){
+          localStorage.setItem("session", element.rol);
+          localStorage.setItem("id", ''+element.id);
+          this.router.navigate(['/noticias']);
+        }else if(element.nombre == this.datos.nombre && element.rol == this.datos.rol && element.pueblo.id == this.datos.pueblo_id){
           localStorage.setItem("session", element.rol);
           localStorage.setItem("id", ''+element.id);
           this.router.navigate(['/noticias']);

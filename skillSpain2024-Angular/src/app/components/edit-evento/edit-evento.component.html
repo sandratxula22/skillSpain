@@ -6,7 +6,7 @@
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
-                        <h3 class="mb-5">Crear Evento</h3>
+                        <h3 class="mb-5">Editar Evento</h3>
                         <form [formGroup]="formularioEvento" (ngSubmit)="submit()">
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label class="form-label" for="nombre">Nombre</label>
@@ -31,19 +31,14 @@
                             <div data-mdb-input-init class="form-outline mb-4">
                                 <label class="form-label" for="pueblo_id">Pueblo</label>
                                 <select id="pueblo_id" class="form-select form-select-lg mb-4" formControlName="pueblo_id">
-                                    @if(session == 'Administrador'){
-                                        @for(pueblo of pueblos; track pueblo.id){
-                                            <option value="{{ pueblo.id }}">{{ pueblo.nombre }}</option>
-                                        }
-                                    }
-                                    @if(session == 'Alcalde'){
-                                        <option value="{{ usuario?.pueblo?.id }}">{{ usuario?.pueblo?.nombre }}</option>
+                                    @for(pueblo of pueblos; track pueblo.id){
+                                        <option value="{{ pueblo.id }}">{{ pueblo.nombre }}</option>
                                     }
                                 </select>
                             </div>
 
                             <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" [disabled]="formularioEvento.invalid">
-                                Crear
+                                Editar
                             </button>
                         </form>
                     </div>
